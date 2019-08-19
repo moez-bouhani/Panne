@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 
 //route API pour admin -panneur -depanneur
 Route::prefix('auth')->group(function () {
-    Route::post('register', 'AuthController@register');
+    Route::post('registerAdmin', 'AuthController@registerAdmin');
+    Route::post('registerDepanneur', 'AuthController@registerDepanneur');
+    Route::post('registerPanneur', 'AuthController@registerPanneur');
     Route::post('login', 'AuthController@login');
     Route::get('refresh', 'AuthController@refresh');
      
@@ -42,7 +44,7 @@ Route::prefix('contactPanneur')->group(function () {
 
 Route::get('/contacts', 'ContactController@contacts');
 
-//Route CRUDE  Contact panneur avec leur role 1
+//Route CRUDE  Contact depanneur avec leur role 2
 Route::prefix('contactDepanneur')->group(function () {
 
 
@@ -56,7 +58,37 @@ Route::prefix('contactDepanneur')->group(function () {
    
 
 });
-    
+
+//Route CRUDE  service depanneur avec leur role 2
+Route::prefix('serviceDepanneur')->group(function () {
+
+
+    Route::post('/save_service_depanneur', 'ServiceController@save_service_depanneur');
+
+
+
+    Route::get('/affiche_Service_depanneur/{id}', 'ServiceController@affiche_Service_depanneur');//get service selon id 
+    Route::post('/update_Service_depanneur/{id}', 'ServiceController@update_Service_depanneur');
+    Route::delete('/del_Service_depanneur/{id}', 'ServiceController@del_Service_depanneur');
+   
+    Route::get('/Services', 'ServiceController@Services');
+
+});
+
+//Route CRUDE  categorie depanneur avec leur role 2
+Route::prefix('catDepanneur')->group(function () {
+
+
+    Route::post('/save-contact-save_categorie_servi_depanneur', 'CategorieController@save_categorie_servi_depanneur');
+});
+
+  //Route CRUDE  sous_categorie depanneur avec leur role 2
+Route::prefix('SousCatDepanneur')->group(function () {
+
+
+    Route::post('/save-contact-save_sous_categorie_depanneur', 'Sous_categorieController@save_sous_categorie_depanneur');
+});
+  
 
 
    
