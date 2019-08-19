@@ -16,24 +16,16 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             //cle etrongé de tabla categorie 
-            $table->unsignedInteger('sous_categorie_id');
-            $table->foreign('sous_categorie_id')->references('id')
-                                                ->on('sous_categories')
-                                                ->onDelete('restrict')
-                                                ->onUpdate('restrict');
+            $table->unsignedInteger('categorie_id');
+            $table->foreign('categorie_id')->references('id')->on('categories');
             //cle etrongé de table user (depanneur)
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')
-                                      ->on('users')
-                                      ->onDelete('restrict')
-                                      ->onUpdate('restrict');
-
-
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('titre_service');
             $table->string('detaille_service');
             $table->string('tempt_service');
             $table->string('photo_service');
-            $table->integer('adresse_service');
+            $table->integer('code_postale');
             $table->timestamps();
         });
     }
@@ -45,13 +37,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::table('services', function(Blueprint $table) {
-            $table->dropForeign('services_user_id_foreign');
-        });
-        Schema::drop('services');
-
-
-
-        
+        Schema::dropIfExists('services');
     }
 }
