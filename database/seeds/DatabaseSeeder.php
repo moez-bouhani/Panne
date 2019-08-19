@@ -39,6 +39,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'adresse' => 'kairouan',
             'phone' => '27432182',
+            'login' => '27432182',
+            
             'password' => '27432182',
             'role' => '0'
         ]);
@@ -49,6 +51,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'panneur@gmail.com',
             'adresse' => 'kairouan',
             'phone' => '27432182',
+            'login' => '27432182',
             'password' => '27432182',
             'role' => '1'
         ]);
@@ -58,6 +61,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'panneur@gmail.com',
             'adresse' => 'kairouan',
             'phone' => '27432182',
+            'login' => '27432182',
             'password' => '27432182',
             'role' => '2'
         ]);
